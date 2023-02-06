@@ -1,14 +1,14 @@
-import chess
-from stockfish import Stockfish
-import time
 import os
+import time
+
+import chess
 from dotenv import load_dotenv
+from stockfish import Stockfish
+from utilities import get_stockfish_path
 
 load_dotenv('.env')
 
-START_POS_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
-
-stockfish = Stockfish(os.getenv('STOCKFISH_PATH'))
+stockfish = Stockfish(get_stockfish_path())
 board = chess.Board()
 
 while not board.is_checkmate():
@@ -22,8 +22,9 @@ while not board.is_checkmate():
         print('Stockfish is thinking...')
         board.push_uci(stockfish.get_best_move_time(2000))
     except Exception:
-        if board.fen() != START_POS_FEN:
+        if board.fen() != chess.STARTING_FEN:
             board.pop()
         print(
-            f'Illegal move! Legal moves: {", ".join(chess.square_name(x.to_square) for x in list(board.legal_moves))}')
+            f'Illegal move! Legal moves: {", ".join(chess.square_name(x.to_square) for x in list(board.legal_moves))}'
+        )
         time.sleep(1)

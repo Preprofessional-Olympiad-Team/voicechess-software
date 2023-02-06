@@ -1,1 +1,0 @@
-# voicechess-software
