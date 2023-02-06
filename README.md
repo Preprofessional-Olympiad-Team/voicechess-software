@@ -4,7 +4,7 @@ A repository for software portion of Preprofessional Olympyad case "Chess with V
 
 # Contents
 
-- `/stockfish_interpreter` - python module, which is made to simplify interaction between python code and ![Stockfish 15.1](https://github.com/official-stockfish/Stockfish) chess engine.
+- `/stockfish_interpreter` - python module, which is made to simplify interaction between python code and [Stockfish 15.1](https://github.com/official-stockfish/Stockfish) chess engine.
 
 
 # Installation
@@ -18,4 +18,4 @@ A repository for software portion of Preprofessional Olympyad case "Chess with V
     ```
 
 # Links
-- ![Stockfish chess engine](https://github.com/official-stockfish/Stockfish)
+- [Stockfish chess engine](https://github.com/official-stockfish/Stockfish)
