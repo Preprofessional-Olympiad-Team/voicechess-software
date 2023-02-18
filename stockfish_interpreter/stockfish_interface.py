@@ -28,13 +28,21 @@ class StockfishInterface:
         if move in self.getLegalMovesSan():
             self.board.push_san(move)
             self.stockfish.set_fen_position(self.board.fen)
-            self.board.push_uci(
+            self.last_ai_move = self.board.push_uci(
                 self.stockfish.get_best_move_time(self.think_time)
             )
             return True
         else:
             return False
     
+    def getStockfishMove(self) -> str:
+        """Returns last Stockfish move in UCI notation (e.g. b2b4)
+
+        :return: Last Stockfish move in UCI notation
+        :rtype: str
+        """
+        
+        return self.last_ai_move.uci()
 
     def setBoardPos(self, fen: str) -> None:
         """Sets board to specified FEN string
